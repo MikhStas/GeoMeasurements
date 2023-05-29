@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="30">
+        <title>Представление данных в виде графиков</title>
+        {% load static %}
+        <link href="{% static "core/css/main.css" %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <a href="/map/" class="type_chooser">Перейти на карту</a>
+            <a href="/table/" class="type_chooser">Показать таблицу</a>
+            <h1>Представление данных в виде графиков</h1>
+        </div>
+        {% autoescape off %}
+        {{ plot_div }}
+        {% endautoescape %}
+    </body>
+</html>

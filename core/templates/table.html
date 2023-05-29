@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="10">
+        <title>Табличное представление данных</title>
+        {% load static %}
+        <link href="{% static "core/css/main.css" %}" rel="stylesheet" type="text/css">
+    </head>
+        <div class="wrapper">
+            <a href="/map/" class="type_chooser">Перейти на карту</a>
+            <a href="/graph/" class="type_chooser">Показать графики</a>
+            <h1>Табличное представление данных</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-wrapper">
+                    <p>Обработка данных</p>           
+                    <select name=process>
+                        <option value="none" {% if process == 'none' %} selected {% endif %}>Не выбрано</option>
+                        <option value="sensor" {% if process == 'sensor' %} selected {% endif %}>Группировка по сенсорам</option>
+                        <option value="time_inc" {% if process == 'time_inc' %} selected {% endif %}>Дата от меньшего к большему</option>
+                        <option value="time_dec" {% if process == 'time_dec' %} selected {% endif %}>Дата от большего к меньшему</option>
+                        <option value="err_value" {% if process == 'err_value' %} selected {% endif %}>Показать опасные значения</option>
+                    </select>
+                    <button type="submit">Применить</button>
+                </div>
+            </form>
+            <table>
+                <tr>
+                    <th>Датчик</th>
+                    <th>Время измерения</th>
+                    <th>Координаты</th>
+                    <th>Данные</th>
+                </tr>
+                {% for entry in entries %}
+                    <tr>
+                        <td>{{ entry.s_id.s_name }}</td>
+                        <td>{{ entry.m_timestamp }}</td>
+                        <td>{{ entry.s_id.s_lat }}, {{ entry.s_id.s_long }}</td>
+                        <td 
+                            {% if entry.m_value > entry.s_id.st_id.st_high_value or entry.m_value < entry.s_id.st_id.st_low_value %}
+                                style="color: red;"
+                            {% endif %} 
+                            >
+                            {{ entry.m_value }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tr>
+            </table>
+        </div>
+    <body>
+    </body>
+</html>

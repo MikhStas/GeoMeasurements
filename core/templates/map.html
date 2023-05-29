@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Графическое представление данных</title>
+        {% load static %}
+        <link href="{% static "core/css/main.css" %}" rel="stylesheet" type="text/css">
+    </head>
+        <div class="wrapper">
+            <a href="/table/" class="type_chooser">Перейти к таблице</a>
+            <a href="/graph/" class="type_chooser">Показать графики</a>
+            <h1>Графическое представление данных</h1>
+            <div>{% include "geomap/common.html" %}</div>
+        </div>
+    <body>
+    </body>
+</html>

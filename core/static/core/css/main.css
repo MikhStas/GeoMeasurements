@@ -1,0 +1,32 @@
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.type_chooser {
+    text-align: center;
+    display: block;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-wrapper {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+
